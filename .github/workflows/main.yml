@@ -27,11 +27,11 @@ jobs:
 
       - name: Run MLflow project
         run: |
-          mlflow run Workflow-CI/MLProject --env-manager=local
+          mlflow run MLProject --experiment-name "Heart Disease - CI" --env-manager=local
 
       - name: Get latest MLflow run_id
         run: |
-          RUN_ID=$(ls -td mlruns/0/*/ | head -n 1 | cut -d'/' -f3)
+          RUN_ID=$(ls -td mlruns/*/*/ | head -n 1 | cut -d'/' -f3)
           echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
           echo "Latest run_id: $RUN_ID"
 

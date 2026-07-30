@@ -13,7 +13,8 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 
 warnings.filterwarnings('ignore')
 
-mlflow.set_experiment("Heart Disease - CI")
+if not os.environ.get("MLFLOW_RUN_ID"):
+    mlflow.set_experiment("Heart Disease - CI")
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), os.pardir, os.pardir, "SMSML_mamat", "Membangun_model", "heart_preprocessing")
 fallback_dir = os.path.join(os.path.dirname(__file__), "heart_preprocessing")
